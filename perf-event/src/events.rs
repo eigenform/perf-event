@@ -55,6 +55,9 @@ pub enum Event {
 
     #[allow(missing_docs)]
     Breakpoint(Breakpoint),
+
+    #[allow(missing_docs)]
+    Raw(u64),
 }
 
 impl Event {
@@ -91,6 +94,10 @@ impl Event {
                         attr.__bindgen_anon_4.bp_len = std::mem::size_of::<libc::c_long>() as _;
                     }
                 }
+            }
+            Event::Raw(cfg) => {
+                attr.type_ = bindings::PERF_TYPE_RAW;
+                attr.config = cfg;
             }
         }
     }
