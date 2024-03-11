@@ -486,6 +486,12 @@ impl<'a> Builder<'a> {
         self
     }
 
+    /// Set skid constraint
+    pub fn precise_ip(mut self, val: u64) -> Builder<'a> {
+        self.attrs.set_precise_ip(val);
+        self
+    }
+
     /// Include hypervisor code.
     pub fn include_hv(mut self) -> Builder<'a> {
         self.attrs.set_exclude_hv(0);
